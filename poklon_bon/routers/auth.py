@@ -1,9 +1,9 @@
 from fastapi import APIRouter, Depends, HTTPException, status
-from .. import schemas, database, models, token
+from .. import database, models, token
 from sqlalchemy.orm import Session
 from ..hashing import Hash
-from datetime import timedelta
 from fastapi.security import OAuth2PasswordRequestForm
+from ..redis_cache import redis_client
 
 
 router = APIRouter(

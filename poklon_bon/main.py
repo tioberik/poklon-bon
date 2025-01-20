@@ -1,10 +1,13 @@
 from fastapi import FastAPI
 from . import models
 from .database import engine
+from dotenv import load_dotenv
 
 from .routers import bon, user, auth
 
-app = FastAPI(title="Sistem za Poklon BONOVE")
+load_dotenv()
+
+app = FastAPI(title="Sistem za Poklon BONOVE!")
 
 models.Base.metadata.create_all(bind=engine)
 

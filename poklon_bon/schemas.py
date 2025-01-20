@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from typing import Optional
 from datetime import datetime
 from .models import end_of_year
@@ -18,7 +18,8 @@ class PoklonBon(BaseModel):
     value: float
     status: Optional[str] = None
     customer_name: str
-    expires_at: Optional[datetime] = end_of_year
+    #expires_at: Optional[datetime] = end_of_year
+    expires_at: Optional[datetime] = Field(default_factory=end_of_year)
 
 class ShowBon(BaseModel):
     barcode: str
@@ -26,10 +27,12 @@ class ShowBon(BaseModel):
     status: Optional[str] = None
     customer_name: str
     creator: ShowUser
-    expires_at: Optional[datetime] = end_of_year
+    #expires_at: Optional[datetime] = end_of_year
+    expires_at: Optional[datetime] = Field(default_factory=end_of_year)
 
-    class Config():
-        from_attributes = True
+    model_config = {
+        "from_attributes": True  # Omogućava konverziju iz SQLAlchemy modela
+    }
 
 class UpdateBon(BaseModel):
     barcode: Optional[str] = None
