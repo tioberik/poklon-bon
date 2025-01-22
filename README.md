@@ -1,4 +1,4 @@
-# Poklon Bon API
+# Poklon Bon FastAPI Web Aplikacija
 
 FastAPI aplikacija za upravljanje poklon bonovima, uključuje CRUD operacije s MySQL bazom i Redis keširanjem.
 
